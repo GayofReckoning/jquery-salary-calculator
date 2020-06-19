@@ -9,9 +9,9 @@ Your project description goes here. What problem did you solve? How did you solv
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
 
 
-[ ] Build and source HTML, CSS, Jquery, Js
-[ ] Build inputs and submit button [HTML]
-[ ] Add inputted employees to array (js)
+[x] Build and source HTML, CSS, Jquery, Js
+[x] Build inputs and submit button [HTML]
+[ ] Add inputted employees to array as object when button clicked (js)
 [ ] Add all salaries and divide by 12 to store monthly cost in variable (js)
 [ ] Build table framework for display (html)
 [ ] Clear table, append employees to display (js)
