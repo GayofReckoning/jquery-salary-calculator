@@ -11,14 +11,24 @@
 <header><h1>Salary Calculator</h1></header>
 <body>
     <h2>Add an Employee</h2>
-    <section id="emplyeeInputs">
+    <form id="emplyeeInputs">
         <input type="text" id ="firstNameIn" placeholder="First Name">
         <input type="text" id ="lastNameIn" placeholder="Last Name">
         <input type="text" id ="idIn" placeholder="ID">
         <input type="text" id ="titleIn" placeholder="Title">
         $<input type="number" id ="annualSalaryIn" placeholder="Annual Salary">
         <button id="submit-btn">Submit Employee</button>
-    </section>
+    </form>
+    <h3>List of Employees:</h3>
+    <table id = "employeeListOut" >
+        <tr>
+            <th>First Name:  </th>  
+            <th>Last Name:  </th>  
+            <th>ID:  </th>  
+            <th>Title:  </th>  
+            <th>Annual Salary:  </th> 
+        </tr>
+    </table>
 
 </body>
 </html>

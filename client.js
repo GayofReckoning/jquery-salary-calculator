@@ -9,7 +9,12 @@ function readyNow(){
 }
 
 function submitEmployee(){
-    console.log('you clicked submit!')
+    event.preventDefault();
+    //don't submit if no Salary!
+    if ($('#annualSalaryIn').val() === ''){
+        alert('error: you need to enter a salary!')
+        return false;
+    } 
     //set variables for inputs from Dom
     let firstNameIn = $('#firstNameIn').val();
     let lastNameIn = $('#lastNameIn').val();
@@ -20,7 +25,7 @@ function submitEmployee(){
     let newObject = {
         firstName: firstNameIn,
         lastName: lastNameIn,
-        ID: idIn,
+        employeeId: idIn,
         title: titleIn,
         annualSalary: annualSalaryIn
     }; //end newObject
@@ -37,4 +42,35 @@ function submitEmployee(){
     $('#idIn').val('');
     $('#titleIn').val('');
     $('#annualSalaryIn').val('');
+    displayEmployees();
 }//end submitEmployees
+
+function displayEmployees(){
+    console.log('in displayEmployees');
+    //variable for display target
+    let el = $('#employeeListOut');
+    //clear display target
+    el.empty();
+    el.append(` <tr>
+    <th>First Name:  </th>  
+    <th>Last Name:  </th>  
+    <th>ID:  </th>  
+    <th>Title:  </th>  
+    <th>Annual Salary:  </th> 
+</tr>`)
+    //loop to apend employees to display target
+    for (let i=0; i<employees.length; i++){
+        el.append(`<tr><td>${employees[i].firstName}</td>
+        <td>${employees[i].lastName}</td>
+        <td>${employees[i].employeeId}</td>
+        <td>${employees[i].title}</td>
+        <td>$${parseFloat( employees[i].annualSalary).toFixed(2)}</td>
+        <td> <button id="remove${i}">remove</button></td></tr>`) ;
+    }//end for loop
+    //add a remove button
+    //when button is clicked, removeEmployee
+}//end displayEmployees
+
+function removeEmployee(){
+    console.log('employee removed!')
+}
