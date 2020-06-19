@@ -13,7 +13,7 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 [x] Build inputs and submit button [HTML]
 [x] Add inputted employees to array as object when button clicked (js)
 [x] Add all salaries and divide by 12 to store monthly cost in variable (js)
-[ ] Clear table(js)
+[x] Clear table(js)
 [ ] Build table framework for display (html)
 [ ]append employees to display (js)
 [ ] append clear button with employees (js)

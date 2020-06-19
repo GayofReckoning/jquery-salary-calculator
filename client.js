@@ -15,7 +15,7 @@ function submitEmployee(){
     let lastNameIn = $('#lastNameIn').val();
     let idIn = $('#idIn').val();
     let titleIn = $('#titleIn').val();
-    let annualSalaryIn = Number($('#annualSalaryIn').val());
+    let annualSalaryIn = $('#annualSalaryIn').val();
     //make a new Object with these variables
     let newObject = {
         firstName: firstNameIn,
@@ -32,4 +32,9 @@ function submitEmployee(){
     monthlyCost += monthlyEarnings;
     console.log(monthlyCost);
     //clear all input fields
+    $('#firstNameIn').val('');
+    $('#lastNameIn').val('');
+    $('#idIn').val('');
+    $('#titleIn').val('');
+    $('#annualSalaryIn').val('');
 }//end submitEmployees
