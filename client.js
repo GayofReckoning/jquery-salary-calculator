@@ -1,13 +1,11 @@
 $(document).ready(readyNow);
 let employees = [];
 let monthlyCost = 0;
-let x = 0;
 
 function readyNow(){
     //when submit button is clicked, run function submitEmployee
     $('#submit-btn').on('click', submitEmployee);
-
-}
+}//end readyNow
 
 function submitEmployee(){
     event.preventDefault();
@@ -44,6 +42,7 @@ function submitEmployee(){
     $('#titleIn').val('');
     $('#annualSalaryIn').val('');
     displayEmployees();
+    appendCost();
 }//end submitEmployees
 
 function displayEmployees(){
@@ -75,6 +74,17 @@ function displayEmployees(){
 
 function removeEmployee(){
    console.log('employee removed!');
+   //remove parent row
    $(this).parent().parent().remove();
- //   displayEmployees();
+   //remove the whole dang employee object from employees
+}//end removeEmployee
+
+function appendCost(){
+    console.log('total monthly cost:', monthlyCost)
+    let h3 = $('#monthlyCostOut')//
+    // clear h3
+    h3.empty();
+    //append the total monthly cost to h3
+    h3.append(`Total Monthly Cost: $${parseFloat( monthlyCost ).toFixed( 2 )}`);
+    //make it have a red background if over $20,000/mo
 }
