@@ -31,10 +31,6 @@ function submitEmployee(){
     //push object of new inputs to employees array
     employees.push(newObject);
     console.log('stored employees:', employees );
-    //add employee's monthly earnings (salary/12) to monthly total
-    let monthlyEarnings = newObject.annualSalary/12;
-    monthlyCost += monthlyEarnings;
-    console.log(monthlyCost);
     //clear all input fields
     $('#firstNameIn').val('');
     $('#lastNameIn').val('');
@@ -60,27 +56,52 @@ function displayEmployees(){
 </tr>`)
     //loop to apend employees to display target
     for (let i=0; i<employees.length; i++){
-        el.append(`<tr id ="employee${employees[i].id}"><td>${employees[i].firstName}</td>
+        el.append(`<tr id ="employee${employees[i].employeeId}"><td>${employees[i].firstName}</td>
         <td>${employees[i].lastName}</td>
         <td>${employees[i].employeeId}</td>
         <td>${employees[i].title}</td>
         <td>$${parseFloat( employees[i].annualSalary).toFixed(2)}</td>
-        <td> <button class="remove-btn" id="remove${employees[i].id}">remove</button></td></tr>`) ;
+        <td> <button class="remove-btn" id="${employees[i].employeeId}">remove</button></td></tr>`) ;
+ //       $('#employeeListOut').on('click', `.remove${employees[i].id}`, removeEmployee(employees[i].id));
     }//end for loop
     //add a remove button
     //when button is clicked, removeEmployee
-    $('#employeeListOut').on('click', '.remove-btn', removeEmployee);
+  $('#employeeListOut').on('click', '.remove-btn', removeEmployee);
 }//end displayEmployees
 
+function calculateMonthly(){
+    //clear monthlyCost
+    monthlyCost = 0;
+    //loop through array of employees
+    for (let i=0;i<employees.length; i++){
+        //add employee's monthly earnings (salary/12) to monthly total
+        let monthlyEarnings = employees[i].annualSalary/12;
+        monthlyCost += monthlyEarnings;
+    }//end for loop
+    console.log('monthly cost:', monthlyCost);
+    return monthlyCost;
+}//
+
 function removeEmployee(){
-   console.log('employee removed!');
+  // console.log('employee removed! ID: ', $(this).attr('id'));
    //remove parent row
    $(this).parent().parent().remove();
    //remove the whole dang employee object from employees
+   //loop through employees
+   //check for match id to id
+   //splice employee
+   for (let i=0; i<employees.length; i++){
+       if( $( this ).attr( 'id' ) === employees[i].employeeId ){
+           console.log(' removed employee: ', $( this ).attr( 'id' ) ); 
+           let removed = employees.splice(i,1);
+           console.log(employees);
+       }
+   }//end for loop
+   appendCost();
 }//end removeEmployee
 
 function appendCost(){
-    console.log('total monthly cost:', monthlyCost)
+    calculateMonthly();
     let h3 = $('#monthlyCostOut')//
     // clear h3
     h3.empty();
@@ -88,6 +109,8 @@ function appendCost(){
     h3.append(`Total Monthly Cost: $${parseFloat( monthlyCost ).toFixed( 2 )}`);
     //make it have a red background if over $20,000/mo
     if (monthlyCost > 20000){
-        h3.toggleClass( 'redBackground' );
+        h3.addClass( 'redBackground' );
+    } else {
+        h3.removeClass( 'redBackground' );
     }
 }
