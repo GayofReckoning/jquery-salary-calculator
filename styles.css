@@ -2,8 +2,12 @@ body {
   background-color: paleturquoise;
 }
 
-table{
+table {
   width: 80%;
   background-color: aliceblue;
   text-align: center;
+}
+
+.redBackground {
+  background-color: red;
 }

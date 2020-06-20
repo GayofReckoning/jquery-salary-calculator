@@ -87,4 +87,7 @@ function appendCost(){
     //append the total monthly cost to h3
     h3.append(`Total Monthly Cost: $${parseFloat( monthlyCost ).toFixed( 2 )}`);
     //make it have a red background if over $20,000/mo
+    if (monthlyCost > 20000){
+        h3.toggleClass( 'redBackground' );
+    }
 }
