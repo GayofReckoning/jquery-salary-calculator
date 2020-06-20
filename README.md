@@ -17,7 +17,7 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 [x] Build table framework for display (html)
 [x] append employees to display (js)
 [x] append clear button with employees (js)
-[ ] make clear button remove employee (js)
+[x] make clear button remove employee (js)
 [ ] build a space for the total monthly cost (HTML)
 [ ] append total monthly cost to its new home (js)
 [ ] make background turn red on cost if > $20,000 (css/js)

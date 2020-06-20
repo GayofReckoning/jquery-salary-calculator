@@ -1,6 +1,7 @@
 $(document).ready(readyNow);
 let employees = [];
 let monthlyCost = 0;
+let x = 0;
 
 function readyNow(){
     //when submit button is clicked, run function submitEmployee
@@ -60,17 +61,20 @@ function displayEmployees(){
 </tr>`)
     //loop to apend employees to display target
     for (let i=0; i<employees.length; i++){
-        el.append(`<tr><td>${employees[i].firstName}</td>
+        el.append(`<tr id ="employee${employees[i].id}"><td>${employees[i].firstName}</td>
         <td>${employees[i].lastName}</td>
         <td>${employees[i].employeeId}</td>
         <td>${employees[i].title}</td>
         <td>$${parseFloat( employees[i].annualSalary).toFixed(2)}</td>
-        <td> <button id="remove${i}">remove</button></td></tr>`) ;
+        <td> <button class="remove-btn" id="remove${employees[i].id}">remove</button></td></tr>`) ;
     }//end for loop
     //add a remove button
     //when button is clicked, removeEmployee
+    $('#employeeListOut').on('click', '.remove-btn', removeEmployee);
 }//end displayEmployees
 
 function removeEmployee(){
-    console.log('employee removed!')
+   console.log('employee removed!');
+   $(this).parent().parent().remove();
+ //   displayEmployees();
 }
