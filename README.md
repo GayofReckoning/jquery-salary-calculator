@@ -20,8 +20,9 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 [x] make clear button remove employee (js)
 [x] build a space for the total monthly cost (HTML)
 [x] append total monthly cost to its new home (js)
-[ ] make background turn red on cost if > $20,000 (css/js)
+[x] make background turn red on cost if > $20,000 (css/js)
+[ ] Troublehoot: it works but removeEmployee runs employees.length times... why?
 [ ] *stretch* remove an employee's salary from total cost if they are deleted (js)
-[ ] *stretch* make it pretty! (css)
+[x] *stretch* make it pretty! (css)
 
 DONT FORGET TO MAKE NOTES IN CODE, TAKE BREAKS, COMMIT OFTEN!
