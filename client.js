@@ -1,4 +1,4 @@
-$(document).ready(readyNow);
+$( document ).ready( readyNow );
 let employees = [];
 let monthlyCost = 0;
 const monthlyBudget = 20000;
@@ -9,10 +9,10 @@ function readyNow(){
 }//end readyNow
 
 function submitEmployee(){
-    console.log('in submitEmployee');
+    console.log( 'in submitEmployee' );
     //don't let the form refresh the page
     event.preventDefault();
-    //don't submit if no Salary!
+    //don't allow submit if no Salary!
     if ( $( '#annualSalaryIn' ).val() === '' ){
         alert( 'error: you need to enter a salary!' )
         return false;
@@ -51,22 +51,21 @@ function submitEmployee(){
 }//end submitEmployees
 
 function displayEmployees(){
-    console.log('in displayEmployees');
+    console.log( 'in displayEmployees' );
     //variable for display target (table body)
-    let el = $('#employeeListOut');
+    let el = $( '#employeeListOut' );
     //clear display target
     el.empty();
     //loop to apend employees to display target
     //add a remove button
-    for (let i=0; i<employees.length; i++){
+    for ( let i=0; i<employees.length; i++ ) {
         el.append( `<tr id ="employee${ employees[i].employeeId }"><td>${ employees[i].firstName }</td>
         <td>${ employees[i].lastName }</td>
         <td>${ employees[i].employeeId }</td>
         <td>${ employees[i].title }</td>
-        <td>$${ parseFloat( employees[i].annualSalary).toFixed( 2 ) }</td>
-        <td> <button class="remove-btn" id="${employees[i].employeeId}">remove</button></td>
+        <td>$${ parseFloat( employees[i].annualSalary ).toFixed( 2 ) }</td>
+        <td> <button class="remove-btn" id="${ employees[i].employeeId }">remove</button></td>
         </tr>` );
-        
     }//end for loop
   //click handler for new remove button
   $( '#employeeListOut' ).on( 'click', ".remove-btn", removeEmployee) ;
@@ -100,7 +99,7 @@ function removeEmployee( event ){
    for ( let i=0; i<employees.length; i++ ) {
        if( $( this ).attr( 'id' ) === employees[i].employeeId ){
            console.log(' removed employee: ', $( this ).attr( 'id' ) ); 
-           let removed = employees.splice(i,1);
+           let removed = employees.splice( i, 1 );
            console.log( employees );
        }
    }//end for loop
@@ -116,7 +115,7 @@ function appendCost(){
     // clear h3
     h3.empty();
     //append the total monthly cost to h3
-    h3.append( `Total Monthly Cost: $${ monthlyCost .toLocaleString(undefined, { maximumFractionDigits: 2 })}` );
+    h3.append( `Total Monthly Cost: $${ monthlyCost .toLocaleString( undefined, { maximumFractionDigits: 2 } ) }` );
     //make it have a red background if over $20,000/mo
     if ( monthlyCost > monthlyBudget){
         h3.addClass( 'redBackground' );
