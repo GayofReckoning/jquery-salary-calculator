@@ -6,6 +6,7 @@ const monthlyBudget = 20000;
 function readyNow(){
     //when submit button is clicked, run function submitEmployee (click handler)
     $( '#submit-btn' ).on( 'click', submitEmployee );
+    console.log( 'in readyNow' );
 }//end readyNow
 
 function submitEmployee(){
@@ -14,12 +15,27 @@ function submitEmployee(){
     event.preventDefault();
     //don't allow submit if no Salary!
     if ( $( '#annualSalaryIn' ).val() === '' ){
-        alert( 'error: you need to enter a salary!' )
+        alert( 'error: Please enter a valid salary' );
         return false;
     } 
-    //or if no employee id# ( it will heck up our function )
+    //require an emplyee ID
     if ( $( '#idIn' ).val() === '' ){
-        alert( 'error: you need to enter a ID!' )
+        alert( 'error: please enter an ID' );
+        return false;
+    } 
+    //Require a first name
+    if ( $( '#firstNameIn' ).val() === '' ){
+        alert( 'error: Please enter a valid first name' );
+        return false;
+    } 
+    //require a last name
+    if ( $( '#lastNameIn' ).val() === '' ){
+        alert( 'error: Please enter a valid last name' );
+        return false;
+    } 
+    //require a title
+    if ( $( '#titleIn' ).val() === '' ){
+        alert( 'error: please enter a title' );
         return false;
     } 
     //set variables for inputs from Dom
@@ -28,6 +44,14 @@ function submitEmployee(){
     let idIn = $( '#idIn' ).val();
     let titleIn = $( '#titleIn' ).val();
     let annualSalaryIn = $( '#annualSalaryIn' ).val();
+    //Don't allow a duplicate employeeID
+    //loop through existing employee IDs and check for match with idIN
+    for ( let i=0; i<employees.length; i++ ){
+        if ( employees[i].employeeId === idIn ){
+            alert('Error: please enter a unique ID!');
+            return false;
+        }
+    }//end for loop
     //make a new Object with these variables
     let newObject = {
         firstName: firstNameIn,
@@ -83,7 +107,7 @@ function calculateMonthly(){
     }//end for loop
     console.log('monthly cost:', monthlyCost);
     return monthlyCost;
-}//
+}// end calculate Monthly
 
 function removeEmployee( event ){
    //only run this code once
