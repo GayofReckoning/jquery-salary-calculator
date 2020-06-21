@@ -1,7 +1,6 @@
 header {
   background-color: #555b6e; 
   padding: 20px;
-  text-align: center;
   color: #faf9f9;
   margin:0;
 }
@@ -15,24 +14,44 @@ body {
 }
 
 table {
-  width: 90%;
-  background-color: #faf9f9;
   text-align: center;
-  border: 1px double #555b6e;
+  width: 90%;
   margin: 20px;
+  background-color: #faf9f9;
+  border: 1px solid #555b6e;
+}
+
+thead{
+ background-color: #89b0ae    !important;
+}
+
+tbody{
+  border: 1px solid #555b6e;
+  background-color: #faf9f9;
 }
 
 th, td {
-  border: 1px solid #555b6e;
   height: 30px;
+  border: 1px solid #555b6e;
 }
 
 tr:nth-child(even) {
   background-color: #ffe6ba
 }
+
+tfoot {
+  height: 30px;
+  background-color: transparent !important;
+  border: none !important;
+}
   
+#noBorder {
+  border: none !important;
+}
+
 button{
   background-color: #89b0ae;
+  text-align: center !important;
   }
 
 .redBackground {
@@ -45,10 +64,9 @@ button{
 }
 
 h3{
-  text-align: center;
-  margin: 5px;
-  padding: 3px;
-  width: 280px;
+  text-align: right;
+  margin-right: 5%;
+  padding-right: 3px;
 }
 
 h1{
