@@ -7,6 +7,8 @@ function readyNow(){
     //when submit button is clicked, run function submitEmployee (click handler)
     $( '#submit-btn' ).on( 'click', submitEmployee );
     console.log( 'in readyNow' );
+    //click handler for new remove button(s)
+    $( '#employeeListOut' ).on( 'click', '.remove-btn', removeEmployee ) ;
 }//end readyNow
 
 function submitEmployee(){
@@ -91,8 +93,6 @@ function displayEmployees(){
         <td> <button class="remove-btn" id="${ employees[i].employeeId }">remove</button></td>
         </tr>` );
     }//end for loop
-  //click handler for new remove button
-  $( '#employeeListOut' ).on( 'click', ".remove-btn", removeEmployee) ;
 }//end displayEmployees
 
 function calculateMonthly(){
@@ -110,15 +110,12 @@ function calculateMonthly(){
 }// end calculate Monthly
 
 function removeEmployee( event ){
-   //only run this code once
-   event.stopPropagation();
-   event.stopImmediatePropagation();
    console.log( 'in remove Employee' );
    //remove parent row
    $( this ).parent().parent().remove();
    //remove the whole dang employee object from employees
    //loop through employees
-   //check for match id to id
+   //check for match employeeID to buttonID
    //splice employee
    for ( let i=0; i<employees.length; i++ ) {
        if( $( this ).attr( 'id' ) === employees[i].employeeId ){
