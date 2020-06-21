@@ -1,10 +1,11 @@
 $(document).ready(readyNow);
 let employees = [];
 let monthlyCost = 0;
+const monthlyBudget = 20000;
 
 function readyNow(){
-    //when submit button is clicked, run function submitEmployee
-    $('#submit-btn').on('click', submitEmployee);
+    //when submit button is clicked, run function submitEmployee (click handler)
+    $( '#submit-btn' ).on( 'click', submitEmployee );
 }//end readyNow
 
 function submitEmployee(){
@@ -51,33 +52,24 @@ function submitEmployee(){
 
 function displayEmployees(){
     console.log('in displayEmployees');
-    //variable for display target
+    //variable for display target (table body)
     let el = $('#employeeListOut');
     //clear display target
     el.empty();
-    //append the table header
-    el.append(` <thead> <tr>
-        <th>First Name:  </th>  
-        <th>Last Name:  </th>  
-        <th>ID:  </th>  
-        <th>Title:  </th>  
-        <th>Annual Salary:  </th> 
-        </tr></thead>`)
     //loop to apend employees to display target
+    //add a remove button
     for (let i=0; i<employees.length; i++){
         el.append( `<tr id ="employee${ employees[i].employeeId }"><td>${ employees[i].firstName }</td>
         <td>${ employees[i].lastName }</td>
         <td>${ employees[i].employeeId }</td>
         <td>${ employees[i].title }</td>
         <td>$${ parseFloat( employees[i].annualSalary).toFixed( 2 ) }</td>
-        <td> <button class="remove-btn" id="${ employees[i].employeeId }">remove</button></td>
+        <td> <button class="remove-btn" id="${employees[i].employeeId}">remove</button></td>
         </tr>` );
+        
     }//end for loop
-    //add a remove button
-    //append a footer for the table
-    el.append( `<tfoot><tr> <td id="noBorder"></td> </tr></tfoot>` );
-    //when button is clicked, removeEmployee
-  $('#employeeListOut').on('click', '.remove-btn', removeEmployee);
+  //click handler for new remove button
+  $( '#employeeListOut' ).on( 'click', ".remove-btn", removeEmployee) ;
 }//end displayEmployees
 
 function calculateMonthly(){
@@ -85,7 +77,7 @@ function calculateMonthly(){
     //clear monthlyCost
     monthlyCost = 0;
     //loop through array of employees
-    for (let i=0;i<employees.length; i++){
+    for ( let i=0; i<employees.length; i++) {
         //add employee's monthly earnings (salary/12) to monthly total
         let monthlyEarnings = employees[i].annualSalary/12;
         monthlyCost += monthlyEarnings;
@@ -94,10 +86,13 @@ function calculateMonthly(){
     return monthlyCost;
 }//
 
-function removeEmployee(){
-  console.log( 'in remove Employee' );
+function removeEmployee( event ){
+   //only run this code once
+   event.stopPropagation();
+   event.stopImmediatePropagation();
+   console.log( 'in remove Employee' );
    //remove parent row
-   $(this).parent().parent().remove();
+   $( this ).parent().parent().remove();
    //remove the whole dang employee object from employees
    //loop through employees
    //check for match id to id
@@ -106,7 +101,7 @@ function removeEmployee(){
        if( $( this ).attr( 'id' ) === employees[i].employeeId ){
            console.log(' removed employee: ', $( this ).attr( 'id' ) ); 
            let removed = employees.splice(i,1);
-           console.log(employees);
+           console.log( employees );
        }
    }//end for loop
    appendCost();
@@ -123,7 +118,7 @@ function appendCost(){
     //append the total monthly cost to h3
     h3.append( `Total Monthly Cost: $${ monthlyCost .toLocaleString(undefined, { maximumFractionDigits: 2 })}` );
     //make it have a red background if over $20,000/mo
-    if ( monthlyCost > 20000 ){
+    if ( monthlyCost > monthlyBudget){
         h3.addClass( 'redBackground' );
     } else {
         h3.removeClass( 'redBackground' );
