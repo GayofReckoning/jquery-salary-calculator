@@ -7,7 +7,7 @@ function readyNow(){
     //when submit button is clicked, run function submitEmployee (click handler)
     $( '#submit-btn' ).on( 'click', submitEmployee );
     console.log( 'in readyNow' );
-    //click handler for new remove button(s)
+    //click handler for new remove button(s) - runs removeEmployee
     $( '#employeeListOut' ).on( 'click', '.remove-btn', removeEmployee ) ;
 }//end readyNow
 
@@ -111,7 +111,7 @@ function calculateMonthly(){
 
 function removeEmployee( event ){
    console.log( 'in remove Employee' );
-   //remove parent row
+   //remove grandparent row
    $( this ).parent().parent().remove();
    //remove the whole dang employee object from employees
    //loop through employees
