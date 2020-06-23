@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../../Week 8/jquery-color-swap"
 		}
 	]
 }
