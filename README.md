@@ -15,7 +15,7 @@ A salary calculator that allows the user to input an Employee with a first name,
 
 ## Screen Shot
 
-![Screen Shot](Screen Shot 2020-06-22 at 11.49.30 AM.png)
+![Screen Shot](Salary-Calc-Scrn.png)
 
 ## Usage
 How does someone use this application? Tell a user story here.
